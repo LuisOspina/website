@@ -1,21 +1,10 @@
 import AnimatedText from "./animated-text";
 
 const links = [
-  { label: "GitHub", href: "https://github.com/LuisOspina" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/luisfospina/" },
+  { label: "Gallery", href: "https://gallery.luisospina.ca", icon: "photo_library" },
+  { label: "GitHub", href: "https://github.com/LuisOspina", icon: "code" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/luisfospina/", icon: "work" },
 ];
-
-function SocialLinks() {
-  return (
-    <nav aria-label="Social links">
-      {links.map((link) => (
-        <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-          {link.label}
-        </a>
-      ))}
-    </nav>
-  );
-}
 
 export default function Home() {
   return (
@@ -25,17 +14,24 @@ export default function Home() {
           <span>Luis</span> <span>Ospina</span>
         </a>
 
-        <div className="desktop-nav">
-          <SocialLinks />
-        </div>
-
-        <details className="mobile-nav">
-          <summary aria-label="Social links menu">
-            <span />
-            <span />
-            <span />
+        <details className="site-menu">
+          <summary aria-label="Open menu">
+            <span className="material-symbols-rounded menu-open" aria-hidden="true">menu</span>
+            <span className="material-symbols-rounded menu-close" aria-hidden="true">close</span>
           </summary>
-          <SocialLinks />
+          <nav aria-label="Main menu">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target={link.label === "Gallery" ? undefined : "_blank"}
+                rel={link.label === "Gallery" ? undefined : "noreferrer"}
+              >
+                <span className="material-symbols-rounded" aria-hidden="true">{link.icon}</span>
+                {link.label}
+              </a>
+            ))}
+          </nav>
         </details>
       </header>
 
