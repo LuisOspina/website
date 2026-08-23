@@ -1,68 +1,50 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import AnimatedText from "./animated-text";
+
+const links = [
+  { label: "GitHub", href: "https://github.com/LuisOspina" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/luisfospina/" },
+];
+
+function SocialLinks() {
+  return (
+    <nav aria-label="Social links">
+      {links.map((link) => (
+        <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  );
+}
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="page">
+      <header>
+        <a className="name" href="#main" aria-label="Luis Ospina, home">
+          <span>Luis</span> <span>Ospina</span>
+        </a>
+
+        <div className="desktop-nav">
+          <SocialLinks />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        <details className="mobile-nav">
+          <summary aria-label="Social links menu">
+            <span />
+            <span />
+            <span />
+          </summary>
+          <SocialLinks />
+        </details>
+      </header>
+
+      <main id="main">
+        <h1>Welcome! I&apos;m Luis.</h1>
+        <p className="intro">
+          Click around to learn about <AnimatedText />
+          <span className="screen-reader-text">my life and my work</span>
+        </p>
       </main>
     </div>
   );
