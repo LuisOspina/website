@@ -2,15 +2,37 @@ import AnimatedText from "./animated-text";
 import Link from "next/link";
 
 const links = [
-  { label: "Gallery", href: "https://gallery.luisospina.ca", icon: "gallery" },
-  { label: "GitHub", href: "https://github.com/LuisOspina", icon: "github" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/luisfospina/", icon: "linkedin" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/luisfospina/",
+    icon: "linkedin",
+    description: "Experience, ideas, and professional updates.",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/LuisOspina",
+    icon: "github",
+    description: "Projects, experiments, and code.",
+  },
+  {
+    label: "Gallery",
+    href: "https://gallery.luisospina.ca",
+    icon: "gallery",
+    description: "A collection of moments I wanted to keep.",
+  },
+  {
+    label: "Clock app",
+    href: "https://clock.luisospina.ca",
+    icon: "clock",
+    description: "A simple, focused clock for the browser.",
+  },
 ];
 
 const iconPaths = {
   menu: "M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z",
   close: "m6.4 5-1.4 1.4 5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4 17.6 5 12 10.6 6.4 5Z",
   gallery: "M4 4h16v16H4V4Zm2 2v9l3-3 2.5 3 3.5-4 3 4V6H6Z",
+  clock: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v4.6l3.2 1.9-1 1.7-4.2-2.5V7h2Z",
   github: "M12 .7a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.2.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.6.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.9 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.5.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2v3.2c0 .4.2.7.8.6A11.5 11.5 0 0 0 12 .7Z",
   linkedin: "M5.3 7.8H1.7V22h3.6V7.8ZM3.5 2A2.1 2.1 0 1 0 3.5 6.2 2.1 2.1 0 0 0 3.5 2ZM22 13.9c0-4.3-2.3-6.3-5.4-6.3a4.6 4.6 0 0 0-4.1 2.2v-2h-3.6V22h3.6v-7c0-1.8.3-3.6 2.7-3.6s2.5 2.2 2.5 3.7V22H22v-8.1Z",
 };
@@ -49,11 +71,35 @@ export default function Home() {
       </header>
 
       <main id="main">
-        <h1>Welcome! I&apos;m Luis.</h1>
-        <p className="intro">
-          Click around to learn about <AnimatedText />
-          <span className="screen-reader-text">my life and my work</span>
-        </p>
+        <section className="hero" aria-labelledby="welcome-heading">
+          <h1 id="welcome-heading">Welcome! I&apos;m Luis.</h1>
+          <p className="intro">
+            Click around to learn about <AnimatedText />
+            <span className="screen-reader-text">my life and my work</span>
+          </p>
+        </section>
+
+        <section className="destinations" aria-label="Places to visit">
+          <div className="card-grid">
+            {links.map((link, index) => (
+              <a
+                className="destination-card"
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="card-number">{String(index + 1).padStart(2, "0")}</span>
+                <Icon name={link.icon as keyof typeof iconPaths} />
+                <span className="card-copy">
+                  <span className="card-title">{link.label}</span>
+                  <span className="card-description">{link.description}</span>
+                </span>
+                <span className="card-arrow" aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
