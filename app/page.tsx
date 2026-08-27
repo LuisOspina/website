@@ -6,7 +6,7 @@ const links = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/luisfospina/",
     icon: "linkedin",
-    description: "Experience, ideas, and professional updates.",
+    description: "Professional profile and resume. Connect with me!",
   },
   {
     label: "GitHub",
@@ -18,13 +18,13 @@ const links = [
     label: "Gallery",
     href: "https://gallery.luisospina.ca",
     icon: "gallery",
-    description: "A collection of moments I wanted to keep.",
+    description: "Views, food, and pets.",
   },
   {
     label: "Clock app",
     href: "https://clock.luisospina.ca",
     icon: "clock",
-    description: "A simple, focused clock for the browser.",
+    description: "Your phone’s clock, reimagined. A focused UI experiment.",
   },
 ];
 
