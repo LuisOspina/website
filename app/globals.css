@@ -140,11 +140,15 @@ h1,
 }
 
 .destination-card .icon {
+  grid-column: 2;
+  grid-row: 1;
   width: 1.65rem;
   height: 1.65rem;
 }
 
 .card-number {
+  grid-column: 1;
+  grid-row: 1;
   align-self: center;
   color: color-mix(in srgb, currentColor, transparent 42%);
   font-size: 0.75rem;
@@ -154,6 +158,7 @@ h1,
 .card-copy {
   display: flex;
   grid-column: 1 / -1;
+  grid-row: 2;
   align-self: end;
   flex-direction: column;
   gap: 0.55rem;
@@ -172,6 +177,8 @@ h1,
 }
 
 .card-arrow {
+  grid-column: 3;
+  grid-row: 1;
   align-self: start;
   font-size: 1.5rem;
   transition: transform 180ms ease;
@@ -335,6 +342,10 @@ body:has(.site-menu[open]) {
 
   .destination-card .icon {
     display: none;
+  }
+
+  .card-arrow {
+    grid-column: 2;
   }
 
   .card-title {
